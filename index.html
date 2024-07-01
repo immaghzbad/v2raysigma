@@ -1,0 +1,533 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+    <head>
+        <!-- Google tag (gtag.js) -->
+        <script
+            async
+            src="https://www.googletagmanager.com/gtag/js?id=G-9H161CG45C"
+        ></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag("js", new Date());
+            gtag("config", "G-9H161CG45C");
+        </script>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>V2ray Sigma</title>
+        <link
+            href="https://cdn.fontcdn.ir/Font/Persian/Vazir/Vazir.css"
+            rel="stylesheet"
+        />
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/icon?family=Material+Icons"
+        />
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+        />
+        <link
+            href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-rc.0/css/select2.min.css"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" type="text/css" href="style.css" />
+        <style>.mini-app {
+  width: 300px;
+  height: 200px;
+  background-color: #f1f1f1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}</style>
+    </head>
+    <body oncontextmenu="return false;">
+      <div class="mini-app">
+        <div class="card">
+            <div class="card-content">
+                <h3 class="card-title" id="title">کانفیگ رایگان</h3>
+                <br />
+                <div id="selected-server" style="color: #000">
+                    یک سرور انتخاب کنید
+                </div>
+                <select
+                    id="server-select"
+                    class=""
+                    aria-label="انتخاب سرور"
+                    onchange="showServer()"
+                >
+                    <optgroup label="یک سرور انتخاب کنید">
+                        <option value="server1" selected>سرور ۱</option>
+                        <option value="server2">سرور ۲</option>
+                        <option value="server3">سرور ۳</option>
+                        <option value="server4">سرور ۴</option>
+                        <option value="server5">سرور ۵</option>
+                        <option value="server6">سرور ۶</option>
+                        <option value="server7">سرور ۷</option>
+                        <option value="server8">سرور ۸</option>
+                        <option value="server9">سرور ۹</option>
+                        <option value="server10">سرور ۱٠</option>
+                        <option value="server11">سرور ۱۱</option>
+                        <option value="server12">سرور ۱۲</option>
+                        <option value="server13">سرور ۱۳</option>
+                        <option value="server14">سرور ۱۴</option>
+                        <option value="server15">سرور ۱۵</option>
+                    </optgroup>
+                </select>
+                <br />
+                <button
+                    id="get-config"
+                    class="btn btn-primary btn-lg d-block mx-auto"
+                    onclick="fetchConfigs()"
+                >
+                    دریافت کانفیگ
+                </button>
+                <br />
+                <div id="progress-bar">
+                    <div class="progress"></div>
+                    <div class="progress-text">0%</div>
+                </div>
+                <br />
+                <textarea
+                    id="config-output"
+                    class="form-control custom-textarea mt-3"
+                    rows="8"
+                    readonly
+                    placeholder="بر روی دکمه دریافت کانفیگ کلیک کنید"
+                ></textarea
+                ><br />
+                <div
+                    class="d-flex justify-content-center align-items-center flex-wrap mt-3"
+                >
+                    <button
+                        id="copy-config"
+                        class="btn btn-success btn-lg mx-2"
+                    >
+                        کپی
+                    </button>
+                    <button
+                        id="clear-config"
+                        class="btn btn-primary btn-lg mx-2"
+                    >
+                        تازه سازی
+                    </button>
+                </div>
+                <br />
+                <span
+                    style="
+                        font-size: smaller;
+                        text-align: center;
+                        display: block;
+                        margin-top: 10px;
+                        color: #000;
+                    "
+                >
+                    <script>
+                        var textChunks = [
+                            "\u062a\u0648\u0633\u0639\u0647\u0020\u06cc\u0627\u0641\u062a\u0647\u0020\u062a\u0648\u0633\u0637 ",
+                            "&#x1F49C;",
+                            " \u067e\u0627\u0648\u0631\u0020\u0633\u06cc\u06af\u0645\u0627"
+                        ];
+                        for (var i = 0; i < textChunks.length; i++) {
+                            document.write(textChunks[i]);
+                        }
+                    </script>
+                </span>
+            </div>
+        </div>
+
+        <div class="dialog-overlay" id="dialog">
+            <div class="dialog-content">
+                <p class="animated-bg animated-bg-text right-text" id="text1">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </p>
+                <p class="animated-bg animated-bg-text center-text" id="text2">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </p>
+                <button
+                    class="dialog-button animated-bg animated-bg-text"
+                    id="telegramchannel"
+                >
+                    عضویت در کانال تلگرام
+                </button>
+                <p></p>
+                <button
+                    class="dialog-button animated-bg animated-bg-text"
+                    id="confirmBtn"
+                >
+                    بستن
+                </button>
+            </div>
+        </div>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-rc.0/js/select2.min.js"></script>
+
+        <script>
+            const dialog = document.getElementById("dialog");
+            const confirmBtn = document.getElementById("confirmBtn");
+
+            function openDialog() {
+                dialog.style.display = "flex";
+            }
+
+            confirmBtn.addEventListener("click", () => {
+                dialog.style.display = "none";
+            });
+        </script>
+        <script>
+            document.addEventListener("contextmenu", event =>
+                event.preventDefault()
+            );
+        </script>
+        <script>function showServer() {
+    const selectElement = document.getElementById("server-select");
+    const selectedServer =
+        selectElement.options[selectElement.selectedIndex].text;
+    document.getElementById("selected-server").innerText =
+        "" + selectedServer + " انتخاب شده.";
+}
+
+$(document).ready(function () {
+    $("#server-select").select2({
+        width: "100%",
+        dropdownAutoWidth: true,
+        placeholder: "یک سرور انتخاب کنید",
+        dir: "rtl",
+        theme: "material",
+        language: {
+            noResults: function () {
+                return "کلمه مورد نظر وجود ندارد";
+            }
+        }
+    });
+
+    // تنظیمات CSS برای فلاش
+    $(".select2-selection").css("background-color", "#fff");
+    $(".select2-selection").css("border", "1px solid #ccc");
+    $(".select2-container").css("margin-bottom", "30px");
+});
+
+let textarea = document.getElementById("config-output");
+
+textarea.addEventListener("scroll", function () {
+    let isScrolledToBottom =
+        textarea.scrollHeight - textarea.clientHeight <= textarea.scrollTop + 1;
+
+    if (isScrolledToBottom) {
+        textarea.style.overflowY = "auto";
+    } else {
+        textarea.style.overflowY = "auto";
+    }
+});
+
+function fetchConfigs() {
+    var selectedServer = document.getElementById("server-select").value;
+    var url;
+    var progressBar = document.querySelector("#progress-bar .progress");
+    var progressText = document.querySelector("#progress-bar .progress-text");
+
+    switch (selectedServer) {
+        case "server1":
+            url =
+                "https://raw.githubusercontent.com/Mahdi0024/ProxyCollector/master/sub/proxies.txt";
+            break;
+        case "server2":
+            url =
+                "https://raw.githubusercontent.com/xc0000e9/deatnote/main/Hiddify-next.fragment";
+            break;
+        case "server3":
+            url =
+                "https://raw.githubusercontent.com/Everyday-VPN/Everyday-VPN/main/subscription/main.txt";
+            break;
+        case "server4":
+            url =
+                "https://raw.githubusercontent.com/soroushmirzaei/telegram-configs-collector/main/splitted/subscribe";
+            break;
+        case "server5":
+            url =
+                "https://raw.githubusercontent.com/yebekhe/TVC/main/subscriptions/xray/normal/mix";
+            break;
+        case "server6":
+            url =
+                "https://raw.githubusercontent.com/mahdibland/ShadowsocksAggregator/master/Eternity";
+            break;
+        case "server7":
+            url = "https://raw.githubusercontent.com/OnyxVPN/sub/main/config";
+            break;
+        case "server8":
+            url =
+                "https://raw.githubusercontent.com/mraliasadi8831/Subscription-/main/profiles.txt";
+            break;
+        case "server9":
+            url = "https://oss.v2rayse.com/proxies/data/2024-02-23/zXrCyAM.txt";
+            break;
+        case "server10":
+            url = "";
+            break;
+        case "server11":
+            url = "";
+            break;
+        case "server12":
+            url = "";
+            break;
+
+        default:
+            url = "";
+            break;
+    }
+    if (url) {
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", url, true);
+        xhr.onloadstart = function () {
+            progressBar.style.width = "0%";
+            progressText.innerHTML = "0%";
+        };
+        xhr.onload = function () {
+            if (xhr.status === 200) {
+                document.getElementById("config-output").value =
+                    xhr.responseText;
+            } else {
+                console.error("Error fetching config:", xhr.statusText);
+                var noconfigMessage = $(
+                    "<div class='success-message'>خطا در دریافت کانفیگ سرور در دسترس نمیباشد</div>"
+                );
+                progressBar.style.width = "0%";
+                progressText.innerHTML = "0%";
+                $("body").append(noconfigMessage);
+                noconfigMessage.css({
+                    position: "fixed",
+                    top: "0",
+                    left: "0",
+                    width: "100%",
+                    "background-color": "#F44336",
+                    color: "white",
+                    padding: "10px",
+                    "text-align": "center",
+                    "font-weight": "bold",
+                    opacity: "1",
+                    transition: "opacity 2s ease-in-out",
+                    "z-index": "9999"
+                });
+                setTimeout(function () {
+                    noconfigMessage.css("opacity", "0");
+                    setTimeout(function () {
+                        noconfigMessage.remove();
+                    }, 3000);
+                }, 3000);
+            }
+        };
+        xhr.onerror = function () {
+            console.error("Error fetching config:", xhr.statusText);
+            var noconfigMessage = $(
+                "<div class='success-message'>خطا در دریافت کانفیگ سرور در دسترس نمیباشد</div>"
+            );
+            progressBar.style.width = "0%";
+            progressText.innerHTML = "0%";
+            $("body").append(noconfigMessage);
+            noconfigMessage.css({
+                position: "fixed",
+                top: "0",
+                left: "0",
+                width: "100%",
+                "background-color": "#F44336",
+                color: "white",
+                padding: "10px",
+                "text-align": "center",
+                "font-weight": "bold",
+                opacity: "1",
+                transition: "opacity 2s ease-in-out",
+                "z-index": "9999"
+            });
+            setTimeout(function () {
+                noconfigMessage.css("opacity", "0");
+                setTimeout(function () {
+                    noconfigMessage.remove();
+                }, 3000);
+            }, 3000);
+        };
+        xhr.onprogress = function (e) {
+            if (e.lengthComputable) {
+                var progress = (e.loaded / e.total) * 100;
+                progressBar.style.width = progress + "%";
+                progressText.innerHTML = Math.round(progress) + "%";
+            }
+        };
+        xhr.onloadend = function () {
+            progressBar.style.width = "100%";
+            progressText.innerHTML = "100%";
+        };
+
+        xhr.send();
+    } else {
+        var noconfigMessage = $(
+            "<div class='success-message'>سرور مورد نظر در دسترس نمیباشد</div>"
+        );
+        progressBar.style.width = "0%";
+        progressText.innerHTML = "0%";
+        $("body").append(noconfigMessage);
+        noconfigMessage.css({
+            position: "fixed",
+            top: "0",
+            left: "0",
+            width: "100%",
+            "background-color": "#F44336",
+            color: "white",
+            padding: "10px",
+            "text-align": "center",
+            "font-weight": "bold",
+            opacity: "1",
+            transition: "opacity 2s ease-in-out",
+            "z-index": "9999"
+        });
+        setTimeout(function () {
+            noconfigMessage.css("opacity", "0");
+            setTimeout(function () {
+                noconfigMessage.remove();
+            }, 3000);
+        }, 3000);
+    }
+}
+
+document.getElementById("clear-config").addEventListener("click", function () {
+    var success = true;
+    var progressBar = document.querySelector("#progress-bar .progress");
+    var progressText = document.querySelector("#progress-bar .progress-text");
+    if (success) {
+        progressBar.style.width = "0%";
+        progressText.innerHTML = "0%";
+        document.getElementById("config-output").value = "";
+        document.getElementById("config-title").textContent = "تعداد: 0";
+    }
+});
+
+function copyToClipboard(text) {
+    var textarea = document.createElement("textarea");
+    textarea.value = text;
+    textarea.setAttribute("readonly", "");
+    textarea.style.position = "absolute";
+    textarea.style.left = "-9999px";
+    document.body.appendChild(textarea);
+    textarea.select();
+    var success = document.execCommand("copy");
+    document.body.removeChild(textarea);
+    return success;
+}
+
+$(document).ready(function () {
+    $("#copy-config").click(function () {
+        var config = $("#config-output").val();
+        if (config) {
+            var success = copyToClipboard(config);
+            if (success) {
+                var successMessage = $(
+                    "<div class='success-message'>کانفیگ ها کپی شدند</div>"
+                );
+                $("body").append(successMessage);
+                successMessage.css({
+                    position: "fixed",
+                    top: "0",
+                    left: "0",
+                    width: "100%",
+                    "background-color": "#4CAF50",
+                    color: "white",
+                    padding: "10px",
+                    "text-align": "center",
+                    "font-weight": "bold",
+                    opacity: "1",
+                    transition: "opacity 2s ease-in-out",
+                    "z-index": "9999"
+                });
+                setTimeout(function () {
+                    successMessage.css("opacity", "0");
+                    setTimeout(function () {
+                        successMessage.remove();
+                    }, 1000);
+                }, 1000);
+            } else {
+                var errorMessage = $(
+                    "<div class='success-message'>مشکلی در کپی کردن به کلیپ بورد به وجود آمده است. لطفاً دستی کپی کنید</div>"
+                );
+                $("body").append(errorMessage);
+                errorMessage.css({
+                    position: "fixed",
+                    top: "0",
+                    left: "0",
+                    width: "100%",
+                    "background-color": "#F44336",
+                    color: "white",
+                    padding: "10px",
+                    "text-align": "center",
+                    "font-weight": "bold",
+                    opacity: "1",
+                    transition: "opacity 2s ease-in-out",
+                    "z-index": "9999"
+                });
+                setTimeout(function () {
+                    errorMessage.css("opacity", "0");
+                    setTimeout(function () {
+                        errorMessage.remove();
+                    }, 1000);
+                }, 1000);
+            }
+        } else {
+            var noconfigMessage = $(
+                "<div class='success-message'>کانفیگی برای کپی کردن وجود ندارد</div>"
+            );
+            $("body").append(noconfigMessage);
+            noconfigMessage.css({
+                position: "fixed",
+                top: "0",
+                left: "0",
+                width: "100%",
+                "background-color": "#F44336",
+                color: "white",
+                padding: "10px",
+                "text-align": "center",
+                "font-weight": "bold",
+                opacity: "1",
+                transition: "opacity 2s ease-in-out",
+                "z-index": "9999"
+            });
+            setTimeout(function () {
+                noconfigMessage.css("opacity", "0");
+                setTimeout(function () {
+                    noconfigMessage.remove();
+                }, 1000);
+            }, 1000);
+        }
+    });
+});
+
+function copyToClipboard(text) {
+    var textarea = document.createElement("textarea");
+    textarea.value = text;
+    textarea.setAttribute("readonly", "");
+    textarea.style.position = "absolute";
+    textarea.style.left = "-9999px";
+    document.body.appendChild(textarea);
+    textarea.select();
+    var success = document.execCommand("copy");
+    document.body.removeChild(textarea);
+    return success;
+}
+document.addEventListener("contextmenu", function (event) {
+    event.preventDefault();
+});
+document.addEventListener("keydown", function (event) {
+    if (event.ctrlKey && event.key === "u") {
+        event.preventDefault();
+    }
+});
+
+document.getElementById("telegramchannel").addEventListener("click", function() {
+    window.open("tg:resolve?domain=PowerSigma");
+});</script>
+
+        <script src="script1.js"></script>
+    </body>
+</html>
