@@ -1,0 +1,326 @@
+@media only screen and (min-width: 600px) {
+    body {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    hiddenr‎ {
+        display: block;
+    }
+}
+
+* {
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: "MyFont";
+    src: url("font.ttf") format("truetype");
+}
+
+body {
+    -webkit-touch-callout: none; /* Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, and Firefox */
+
+    background-color: #ecf0f1;
+    font-family: "MyFont";
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden;
+    margin: 0;
+}
+
+.card {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    overflow: hidden;
+    width: 350px;
+}
+
+.card-header {
+    height: 200px;
+}
+
+.card-header img {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+}
+
+.card-content {
+    background-color: #fff;
+    padding: 10px;
+}
+
+.card-title {
+    font-family: "MyFont";
+    text-align: center;
+    height: 20px;
+    margin: 0;
+}
+
+.card-excerpt {
+    color: #777;
+    margin: 10px 0 20px;
+}
+
+.author {
+    display: flex;
+}
+
+.profile-img {
+    border-radius: 50%;
+    overflow: hidden;
+    height: 40px;
+    width: 40px;
+}
+
+.author-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-left: 10px;
+    width: 100px;
+}
+
+.author-info small {
+    color: #aaa;
+    margin-top: 5px;
+}
+
+.center-text {
+    text-align: center;
+}
+
+.copy-button {
+    font-size: 1rem;
+    padding: 0.3rem 1rem;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-top: 0.5rem;
+    opacity: 0.7;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.copy-button:hover {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+.right-align {
+    text-align: right;
+}
+
+.form-select {
+    font-size: 1.1rem;
+    text-align-last: right;
+}
+
+#clear-config {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #2196f3;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+#clear-config:hover {
+    background-color: #0d47a1;
+}
+
+#get-config {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #2196f3;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+#get-config:hover {
+    background-color: #0d47a1;
+}
+
+#copy-config {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #ff6600;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+#copy-config:hover {
+    background-color: #ff4500;
+}
+
+.custom-card {
+    height: 350px; /* Adjust as needed */
+}
+
+#p {
+    color: #fff;
+}
+
+.custom-textarea {
+    height: 250px; /* Adjust as needed */
+}
+#config-output {
+    text-align: center;
+}
+
+#server-select {
+    width: 300px;
+    height: 50px;
+    text-align: right;
+    display: block;
+    margin: 0 auto;
+    font-family: "MyFont";
+    font-size: 16px;
+    color: #333;
+    border: 2px solid #2196f3;
+    border-radius: 4px;
+    padding: 8px;
+    background-color: #fff;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+#server-select:hover {
+    border-color: #0d47a1;
+}
+
+#server-select:focus {
+    border-color: #0d47a1;
+    box-shadow: 0 0 5px rgba(33, 150, 243, 0.5);
+}
+
+#server-select option {
+    background-color: #fff;
+    color: #333;
+    font-size: 14px;
+    font-family: "MyFont";
+}
+
+#server-select optgroup {
+    font-weight: bold;
+    font-family: "MyFont";
+}
+.select2-container {
+    margin-bottom: 10px;
+}
+
+#progress-text {
+    color: #000;
+}
+
+#progress-bar {
+    width: 100%;
+    height: 30px;
+    background-color: #f1f1f1;
+    border-radius: 5px;
+}
+
+#progress-bar .progress {
+    width: 0%;
+    height: 100%;
+    background-color: #4caf50;
+    border-radius: 5px;
+}
+
+#progress-bar .progress-text {
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    line-height: 30px;
+}
+hr {
+    color: white;
+}
+
+ .dialog-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.dialog-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    margin: 30px;
+}
+
+.dialog-button {
+    padding: 8px 16px;
+    background-color: dodgerblue;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.dialog-button:hover {
+    background-color: lightblue;
+}
+
+.dialog-button:active {
+    background-color: skyblue;
+}
+ 
+
+.animated-bg {
+    background-image: linear-gradient(
+        to right,
+        #f6f7f8 0%,
+        #edeef1 10%,
+        #f6f7f8 20%,
+        #f6f7f8 100%
+    );
+    background-size: 200% 100%;
+    animation: bgPos 1s linear infinite;
+}
+
+.animated-bg-text {
+    border-radius: 50px;
+    display: inline-block;
+    margin: 0;
+    height: 10px;
+    width: 100%;
+}
+
+@keyframes bgPos {
+    0% {
+        background-position: 50% 0;
+    }
+
+    100% {
+        background-position: -150% 0;
+    }
+}
