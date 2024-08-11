@@ -1,5 +1,7 @@
 * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 @font-face {
@@ -9,67 +11,52 @@
 
 body {
     user-select: none;
-    background-color: #121212;
-    font-family: "MyFont", sans-serif;
+    background-color: #181818;
+    font-family: "MyFont", "Poppins", sans-serif;
     display: flex;
     align-items: center;
     justify-content: center;
     height: 100vh;
-    margin: 0;
-    padding: 0;
     color: #ffffff;
     overflow: hidden;
-    animation: flicker 3s infinite;
+    animation: fadeIn 1s ease-in-out;
 }
 
-@keyframes flicker {
-    0%, 18%, 22%, 25%, 53%, 57%, 100% {
-        opacity: 1;
-    }
-    20%, 24%, 55% {
-        opacity: 0.4;
-    }
-}
-
-@media only screen and (min-width: 600px) {
-    body {
-        display: flex;
-    }
-}
-
-@media only screen and (max-width: 600px) {
-    .hiddenr {
-        display: block;
-    }
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
 .card {
-    box-shadow: 0 2px 20px rgba(255, 193, 7, 0.2);
-    border-radius: 12px;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+    border-radius: 16px;
     overflow: hidden;
-    width: 350px;
-    background-color: #1f1f1f;
+    width: 100%;
+    max-width: 400px;
+    background-color: #212121;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     color: #ffffff;
+    padding: 20px;
 }
 
 .card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 4px 30px rgba(255, 193, 7, 0.4);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.7);
 }
 
 .card-header {
-    height: 200px;
+    height: 220px;
     position: relative;
     overflow: hidden;
+    border-radius: 12px;
 }
 
 .card-header img {
     object-fit: cover;
     height: 100%;
     width: 100%;
-    transition: all 0.3s ease, filter 0.3s ease;
-    filter: brightness(0.8);
+    transition: transform 0.3s ease, filter 0.3s ease;
+    filter: brightness(0.9);
 }
 
 .card-header img:hover {
@@ -77,243 +64,130 @@ body {
     filter: brightness(1);
 }
 
-.card-content {
-    padding: 20px;
-}
-
 .card-title {
     text-align: center;
-    font-size: 1.5rem;
-    margin: 0;
-    color: #ffc107;
-    position: relative;
-    font-weight: bold;
+    font-size: 1.75rem;
+    color: #ffcc00;
+    margin-bottom: 15px;
+    font-weight: 600;
 }
 
 .card-excerpt {
-    color: #ffffff;
+    color: #b3b3b3;
     margin: 10px 0 20px;
     font-size: 1rem;
-    line-height: 1.5;
+    line-height: 1.6;
 }
 
 .author {
     display: flex;
     align-items: center;
+    margin-top: 20px;
 }
 
 .profile-img {
     border-radius: 50%;
-    height: 40px;
-    width: 40px;
-    margin-right: 10px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 50px;
+    width: 50px;
+    margin-right: 15px;
+    transition: transform 0.3s ease;
 }
 
 .profile-img:hover {
-    transform: scale(1.2);
-    box-shadow: 0 0 10px rgba(255, 193, 7, 0.5);
-}
-
-.author-info {
-    display: flex;
-    flex-direction: column;
+    transform: scale(1.1);
+    box-shadow: 0 0 10px rgba(255, 204, 0, 0.5);
 }
 
 .author-info small {
-    color: #ffffff;
+    color: #b3b3b3;
     margin-top: 5px;
     font-size: 0.9rem;
 }
 
-.center-text {
-    text-align: center;
-}
-
-.right-align {
-    text-align: right;
-}
-
 .copy-button {
     font-size: 1rem;
-    padding: 0.3rem 1rem;
-    position: absolute;
-    top: 0.5rem;
-    right: 0;
-    opacity: 0.7;
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(255, 193, 7, 0.1);
-    transition: all 0.3s ease;
+    padding: 0.5rem 1.25rem;
+    border-radius: 12px;
     background-color: #1f1f1f;
-    color: #ffc107;
-    border: 1px solid #ffc107;
+    color: #ffcc00;
+    border: 1px solid #ffcc00;
     cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    display: inline-block;
 }
 
 .copy-button:hover {
-    opacity: 1;
+    background-color: #ffcc00;
+    color: #1f1f1f;
     transform: scale(1.1);
 }
 
 .form-select {
     font-size: 1.1rem;
-    text-align-last: right;
-    padding: 5px;
-    border: 1px solid #ffc107;
-    border-radius: 4px;
+    padding: 0.5rem;
+    border: 1px solid #ffcc00;
+    border-radius: 8px;
     background-color: #1f1f1f;
-    color: #ffc107;
-    margin-bottom: 10px;
+    color: #ffcc00;
+    margin-bottom: 15px;
+    transition: all 0.3s ease;
 }
 
-#clear-config,
-#get-config,
-#copy-config {
-    display: inline-block;
+.form-select:focus {
+    border-color: #ffcc00;
+    box-shadow: 0 0 5px rgba(255, 204, 0, 0.5);
+}
+
+.button-group button {
     padding: 10px 20px;
-    color: #ffc107;
-    text-align: center;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: background-color 0.3s, transform 0.3s;
+    color: #ffcc00;
+    background-color: #1f1f1f;
+    border: 1px solid #ffcc00;
+    border-radius: 8px;
     cursor: pointer;
+    transition: all 0.3s ease;
 }
 
-#clear-config,
-#get-config {
-    background-color: #1f1f1f;
-    border: 1px solid #ffc107;
-}
-
-#clear-config:hover,
-#get-config:hover {
-    background-color: #ffc107;
+.button-group button:hover {
+    background-color: #ffcc00;
     color: #1f1f1f;
-    transform: scale(1.1);
-}
-
-#copy-config {
-    background-color: #1f1f1f;
-    border: 1px solid #ffc107;
-}
-
-#copy-config:hover {
-    background-color: #ffc107;
-    color: #1f1f1f;
-    transform: scale(1.1);
-}
-
-.custom-card {
-    height: 350px;
-    position: relative;
-    overflow: hidden;
-}
-
-.custom-card::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: -75%;
-    width: 150%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 193, 7, 0.5), transparent);
-    transform: skewX(-30deg);
-    transition: 0.5s;
-}
-
-.custom-card:hover::after {
-    left: 100%;
+    transform: translateY(-3px);
 }
 
 .custom-textarea {
-    height: 50px;
+    height: 60px;
     width: 100%;
-    padding: 10px;
-    border: 1px solid #ffc107;
-    border-radius: 4px;
-    font-family: "MyFont", sans-serif;
-    font-size: 1rem;
+    padding: 12px;
+    border: 1px solid #ffcc00;
+    border-radius: 8px;
     background-color: #1f1f1f;
-    color: #ffc107;
-    transition: transform 0.3s ease;
+    color: #ffcc00;
+    font-size: 1rem;
+    transition: all 0.3s ease;
 }
 
 .custom-textarea:focus {
-    transform: scale(1.05);
-}
-
-#config-output {
-    text-align: center;
-    font-family: "MyFont", sans-serif;
-    font-size: 1rem;
-    color: #ffc107;
+    border-color: #ffcc00;
+    box-shadow: 0 0 5px rgba(255, 204, 0, 0.5);
 }
 
 #server-select {
-    width: 300px;
-    height: 50px;
-    text-align: right;
-    margin: 0 auto;
-    font-family: "MyFont", sans-serif;
-    font-size: 16px;
-    color: #ffc107;
-    border: 2px solid #ffc107;
-    border-radius: 4px;
-    padding: 8px;
+    width: 100%;
+    max-width: 350px;
+    padding: 12px;
+    font-size: 1rem;
+    color: #ffcc00;
+    border: 1px solid #ffcc00;
+    border-radius: 8px;
     background-color: #1f1f1f;
     outline: none;
-    transition: border-color 0.3s, transform 0.3s;
+    transition: all 0.3s ease;
 }
 
 #server-select:hover,
 #server-select:focus {
-    border-color: #ffc107;
-    box-shadow: 0 0 5px rgba(255, 193, 7, 0.5);
-    transform: scale(1.05);
-}
-
-#server-select option {
-    background-color: #1f1f1f;
-    color: #ffc107;
-    font-size: 14px;
-}
-
-#progress-text {
-    color: #ffc107;
-}
-
-#progress-bar {
-    width: 100%;
-    height: 30px;
-    background-color: #444;
-    border-radius: 5px;
-    overflow: hidden;
-    position: relative;
-}
-
-#progress-bar .progress {
-    width: 0%;
-    height: 100%;
-    background-color: #ffc107;
-    border-radius: 5px;
-    transition: width 0.3s ease;
-}
-
-#progress-bar .progress-text {
-    color: #ffffff;
-    font-weight: bold;
-    text-align: center;
-    line-height: 30px;
-    position: absolute;
-    width: 100%;
-    top: 0;
-    left: 0;
-}
-
-hr {
-    border: 0;
-    border-top: 1px solid #ffc107;
-    margin: 20px 0;
+    border-color: #ffcc00;
+    box-shadow: 0 0 5px rgba(255, 204, 0, 0.5);
 }
 
 .dialog-overlay {
@@ -323,40 +197,35 @@ hr {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.75);
     z-index: 9999;
     justify-content: center;
     align-items: center;
-    display: flex;
 }
 
 .dialog-content {
-    background-color: #1f1f1f;
-    padding: 20px;
-    border-radius: 8px;
+    background-color: #212121;
+    padding: 25px;
+    border-radius: 12px;
+    color: #ffcc00;
     text-align: center;
-    margin: 30px;
-    color: #ffc107;
+    max-width: 400px;
+    margin: 0 auto;
 }
 
 .dialog-button {
-    padding: 8px 16px;
-    background-color: #ffc107;
+    padding: 10px 20px;
+    background-color: #ffcc00;
     color: #1f1f1f;
     border: none;
-    border-radius: 4px;
+    border-radius: 8px;
     cursor: pointer;
-    transition: background-color 0.3s, transform 0.3s;
+    transition: all 0.3s ease;
 }
 
 .dialog-button:hover {
     background-color: #e6a303;
-    transform: scale(1.1);
-}
-
-.dialog-button:active {
-    background-color: #ffc107;
-    color: #1f1f1f;
+    transform: scale(1.05);
 }
 
 .animated-bg {
@@ -365,20 +234,35 @@ hr {
     animation: bgPos 1.5s linear infinite;
 }
 
-.animated-bg-text {
-    border-radius: 50px;
-    display: inline-block;
-    margin: 0;
-    height: 10px;
-    width: 100%;
-    background: #1f1f1f;
+@keyframes bgPos {
+    0% { background-position: 100% 0; }
+    100% { background-position: -100% 0; }
 }
 
-@keyframes bgPos {
-    0% {
-        background-position: 50% 0;
+hr {
+    border: 0;
+    border-top: 1px solid #ffcc00;
+    margin: 20px 0;
+}
+
+@media (max-width: 768px) {
+    .card {
+        width: 100%;
+        max-width: 90%;
+        padding: 15px;
     }
-    100% {
-        background-position: -150% 0;
+
+    .card-title {
+        font-size: 1.5rem;
     }
+
+    .form-select,
+    #server-select {
+        width: 100%;
+        max-width: 100%;
     }
+
+    .dialog-content {
+        padding: 15px;
+    }
+}
