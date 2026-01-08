@@ -6,5 +6,13 @@
   {
     "name": "🔥 Epodonios Protocol SS",
     "url": "https://github.com/Epodonios/v2ray-configs/raw/main/Splitted-By-Protocol/ss.txt"
+  },
+  {
+    "name": "🔥 Epodonios Protocol VMess",
+    "url": "https://github.com/Epodonios/v2ray-configs/raw/main/Splitted-By-Protocol/vmess.txt"
+  },
+  {
+    "name": "🔥 Epodonios Protocol VLess",
+    "url": "https://github.com/Epodonios/v2ray-configs/raw/main/Splitted-By-Protocol/vless.txt"
   }
 ]
