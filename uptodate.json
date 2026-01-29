@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0",
-  "url": "https://github.com/username/immzghzbad/releases/latest",
-  "changeLog": "• Added support for new VLESS protocols\n• Improved connection speed and stability\n• Fixed minor bugs in dark mode\n• Updated server list"
+  "version": "1.1.0",
+  "url": "https://github.com/immaghzbad/AsemanVPN/releases/download/1.1.0/AsemanVPN-1.1.0-release.apk",
+  "changeLog": "• UI overhaul and improved user interface\n• Added more options to main settings\n• Improved ping functionality (Faster and more accurate)\n• Improved connection speed and stability\n• Note: This version may contain minor bugs; fixes will be released in future updates"
 }
